@@ -1,11 +1,6 @@
 from django.db import models
 from users.models import CustomUser
 
-
- # user нужно создавать отдельным приложением. Создавать CustomUser
-
-
-
 class Posts (models.Model):
     id = models.IntegerField(primary_key=True)
     author = models.ForeignKey(CustomUser,on_delete=models.PROTECT)
@@ -26,7 +21,6 @@ class Comments (models.Model):
     class Meta:
         verbose_name_plural='Comments'
 
-
 class Likes (models.Model):
     id = models.IntegerField(primary_key=True)
     liked_post = models.ForeignKey(Posts,on_delete=models.PROTECT)
@@ -38,7 +32,6 @@ class Likes (models.Model):
 class Media (models.Model):
     id = models.IntegerField(primary_key=True)
     file = models.IntegerField
-
 
     class Meta:
         verbose_name_plural='Media'

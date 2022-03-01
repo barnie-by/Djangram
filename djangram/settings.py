@@ -14,7 +14,6 @@ from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 from credits import DJANGO_KEY, DB_NAME, DB_USER, DB_PASSWORD, DB_HOST
-from credits_example import DB_PORT
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 

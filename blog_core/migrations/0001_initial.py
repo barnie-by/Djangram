@@ -39,7 +39,7 @@ class Migration(migrations.Migration):
             name='Likes',
             fields=[
                 ('id', models.IntegerField(primary_key=True, serialize=False)),
-                ('liked_post', models.ForeignKey(on_delete=django.db.models.deletion.PROTECT, to='firstapp.posts')),
+                ('liked_post', models.ForeignKey(on_delete=django.db.models.deletion.PROTECT, to='blog_core.posts')),
                 ('user_id', models.ForeignKey(on_delete=django.db.models.deletion.PROTECT, to=settings.AUTH_USER_MODEL)),
             ],
             options={
@@ -53,7 +53,7 @@ class Migration(migrations.Migration):
                 ('content', models.TextField(max_length=200)),
                 ('published', models.DateTimeField(auto_now_add=True)),
                 ('author', models.ForeignKey(on_delete=django.db.models.deletion.PROTECT, to=settings.AUTH_USER_MODEL)),
-                ('post', models.ForeignKey(on_delete=django.db.models.deletion.PROTECT, to='firstapp.posts')),
+                ('post', models.ForeignKey(on_delete=django.db.models.deletion.PROTECT, to='blog_core.posts')),
             ],
             options={
                 'verbose_name_plural': 'Comments',

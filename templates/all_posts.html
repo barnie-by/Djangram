@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+{% block content %}
+    {% for posts in object_list %}
+        <div id="post">
+            <h2 id="nickname"> {{ posts.author }}</h2>
+            <a href="{% url 'post_detail' posts.pk %}">
+                <button type="button" class="btn btn-outline-primary"> See post </button>
+            </a>
+            <p id="date">{{ posts.id.published|date:"d.m.Y H:i:s" }}</p>
+        </div>
+    {% endfor %}
+{% endblock %}

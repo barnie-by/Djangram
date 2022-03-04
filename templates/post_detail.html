@@ -1,0 +1,8 @@
+{% extends 'base.html' %}
+{% block content %}
+    <div id="post">
+        <h2 id="nickname"> {{ posts.author }}</h2>
+        <p id="content">{{ posts.content }}</p>
+        <p id="date">{{ posts.published|date:"d.m.Y H:i:s" }}</p>
+    </div>
+{% endblock %}

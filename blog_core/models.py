@@ -10,7 +10,8 @@ class Posts(models.Model):
     slug = models.SlugField(max_length=50, unique=True, db_index=True, verbose_name='URL')
 
     def get_absolute_url(self):
-        return reverse('post', kwargs={'post_slug': self.slug})
+        # return reverse('post', kwargs={'post_slug': self.slug})
+        return reverse("post_detail", args=[self.id])
 
     class Meta:
         verbose_name_plural = 'Posts'

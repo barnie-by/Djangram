@@ -12,6 +12,7 @@ class Home(ListView):
 
 class PostDetail(DetailView):
     model = Posts
+    query_pk_and_slug = True
     template_name = 'post_detail.html'
 
 

@@ -1,5 +1,6 @@
 from django.db import models
 from django.urls import reverse
+from pytils.translit import slugify
 from users.models import CustomUser
 
 
@@ -9,9 +10,19 @@ class Posts(models.Model):
     published = models.DateTimeField(auto_now_add=True)
     slug = models.SlugField(max_length=50, unique=True, db_index=True, verbose_name='URL')
 
+    def save(self, *args, **kwargs):
+        value = self.content
+        self.slug = slugify(value)
+        super().save(*args, **kwargs)
+
     def get_absolute_url(self):
         # return reverse('post', kwargs={'post_slug': self.slug})
-        return reverse("post_detail", args=[self.id])
+        # return reverse("post_detail", args=[self.id])
+        kwargs = {
+            'pk': self.id,
+            'slug': self.slug
+        }
+        return reverse('post_detail', kwargs=kwargs)
 
     class Meta:
         verbose_name_plural = 'Posts'

@@ -1,3 +1,5 @@
+from django.forms import widgets, Textarea
+
 from blog_core.models import Posts
 from django.views.generic import ListView, DetailView, CreateView
 
@@ -16,7 +18,7 @@ class PostDetail(DetailView):
     template_name = 'post_detail.html'
 
 
-class Add(CreateView):
+class AddPost(CreateView):  # доработать под uuid
     model = Posts
     template_name = 'add_post.html'
     fields = ('author', 'content')

@@ -1,18 +1,15 @@
 {% extends "base.html" %}
 {% block content %}
-{% for posts in object_list %}
-         <div id="post">
-             <h2 id="nickname"> {{ posts.author }}</h2>
-{#             <a href="{% url 'post_detail' posts.pk %}">#}
-{#             <a href="{% url 'post' posts.uniqueid %}">#}
-                         <a href="{{ post.get_absolute_url }}">
-
-                 <button type="button" class="btn btn-outline-primary"> See post </button>
-             </a>
-             <p id="date">{{ posts.id.published|date:"d.m.Y H:i:s" }}</p>
-         </div>
-     {% endfor %}
- <div class="paginator">
+    {% for posts in object_list %}
+        <div id="post">
+            <h2 id="nickname"> {{ posts.author }}</h2>
+            <a href="{{ posts.get_absolute_url }}">
+                <button type="button" class="btn btn-outline-primary"> See post</button>
+            </a>
+            <p id="date">{{ posts.id.published|date:"d.m.Y H:i:s" }}</p>
+        </div>
+    {% endfor %}
+    <div class="paginator">
      <span class="step-links">
          {% if page_obj.has_previous %}
              <a href="?page=1">&laquo; first</a>
@@ -26,5 +23,5 @@
              <a href="?page={{ page_obj.paginator.num_pages }}">last &raquo;</a>
          {% endif %}
      </span>
- </div>
- {% endblock %}
+    </div>
+{% endblock %}

@@ -3,3 +3,4 @@ configparser==5.2.0
 Django==4.0.2
 psycopg2==2.9.3
 sqlparse==0.4.2
+pytils~=0.4.1

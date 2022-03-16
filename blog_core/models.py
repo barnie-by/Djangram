@@ -22,11 +22,7 @@ class Posts(models.Model):
         super().save(*args, **kwargs)
 
     def get_absolute_url(self):
-        kwargs = {
-            'pk': self.id,
-            'slug': self.slug
-        }
-        return reverse('post_detail', kwargs=kwargs)
+        return reverse('post_detail', kwargs={'slug': self.slug})
 
     class Meta:
         verbose_name_plural = 'Posts'

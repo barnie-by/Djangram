@@ -1,8 +1,19 @@
 {% extends 'base.html' %}
 {% block content %}
-    <div id="post">
-        <h2 id="nickname"> {{ posts.author }}</h2>
-        <p id="content">{{ posts.content }}</p>
-        <p id="date">{{ posts.published|date:"d.m.Y H:i:s" }}</p>
+    {#    <div id="post">#}
+    {#        <h2 id="nickname"> {{ posts.author }}</h2>#}
+    {#        <p id="content">{{ posts.content }}</p>#}
+    {#        <p id="date">{{ posts.published|date:"d.m.Y H:i:s" }}</p>#}
+    {#    </div>#}
+    <div class="col d-flex justify-content-center">
+        <div class="card" style="width: 18rem;">
+            <img src="..." class="card-img-top" alt="...">
+            <p class="card-body">
+            <h5 class="card-title">{{ posts.author }}</h5>
+            <p class="card-text">{{ posts.content }}</p>
+            <p class="card-date"> {{ posts.published|date:"d.m.Y H:i:s" }}  </p>
+            {#    <a href="#" class="btn btn-primary">Go somewhere</a>#}
+        </div>
+    </div>
     </div>
 {% endblock %}

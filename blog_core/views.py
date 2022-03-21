@@ -1,5 +1,6 @@
 from blog_core.models import Posts
 from django.views.generic import ListView, DetailView, CreateView
+from .forms import PostsForm
 
 
 class Home(ListView):
@@ -19,4 +20,5 @@ class PostDetail(DetailView):
 class AddPost(CreateView):
     model = Posts
     template_name = 'add_post.html'
-    fields = ('author', 'content')
+    form_class = PostsForm
+    # fields = ('author', 'content')

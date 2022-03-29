@@ -4,7 +4,7 @@ from .forms import PostsForm
 
 
 class Home(ListView):
-    paginate_by = 3
+    paginate_by = 5
     model = Posts
     template_name = 'all_posts.html'
     context_object_name = "post"

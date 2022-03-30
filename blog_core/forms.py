@@ -5,7 +5,7 @@ from django.forms import ModelForm, Textarea
 class PostsForm(ModelForm):
     class Meta:
         model = Posts
-        fields = ['author', 'content']
+        fields = ['content']
 
         widgets = {
             'content': Textarea(attrs={

@@ -30,7 +30,7 @@ class Posts(models.Model):
 
 class Comments(models.Model):
     author = models.ForeignKey(CustomUser, on_delete=models.CASCADE)
-    post = models.ForeignKey(Posts, on_delete=models.CASCADE)
+    post = models.ForeignKey(Posts, related_name='comment', on_delete=models.CASCADE)
     content = models.TextField(max_length=200)
     published = models.DateTimeField(auto_now_add=True)
 

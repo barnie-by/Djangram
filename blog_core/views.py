@@ -26,11 +26,12 @@ class PostDetail(DetailView):
         form = CommentForm(request.POST)
         if form.is_valid():
             post = self.get_object()
-            form.instance.author = request.user  # ЭТИ ДВЕ ФУНКЦИИ ВНУТРИ  class PostDetail ОТВЕЧАЮТ ЗА КОММЕНТЫ
+            post_slug = post.slug
+            form.instance.author = request.user
             form.instance.post = post
             form.save()
 
-            return redirect(reverse('post_detail'))
+            return redirect(f'http://127.0.0.1:8000/post/{post_slug}/')
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)

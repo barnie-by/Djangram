@@ -13,10 +13,20 @@
             <p class="card-text">{{ posts.content }}</p>
             <p class="card-date"> {{ posts.published|date:"d.m.Y H:i:s" }}  </p>
             {#    <a href="#" class="btn btn-primary">Go somewhere</a>#}
+            <h6><u>Комментариев: {{ post_comments_count }}</u></h6>
             {% for comments in posts.comment.all %}
-               <p class="card-text">{{ comments.author }}: {{ comments.content }}</p>
-{#                <p class="text">{{ comments.content }}</p>#}
+                <p class="card-text">{{ comments.author }}: {{ comments.content }}</p>
+{#                                <p class="text">{{ comments.published }}</p>#}
             {% endfor %}
         </div>
-    </div>
+    </div> <br>
+    <form method="post" action="{% url 'post_detail' slug=posts.slug %}">
+        {% csrf_token %}
+        <div align="center" >
+            {{ form.content }}
+        </div>
+        <div align="center">
+            <button class="btn btn-outline-primary">Comment</button>
+        </div>
+    </form>
 {% endblock %}

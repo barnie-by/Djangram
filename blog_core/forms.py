@@ -1,5 +1,5 @@
-from .models import Posts
-from django.forms import ModelForm, Textarea
+from .models import Posts, Comments
+from django.forms import ModelForm, Textarea, TextInput
 
 
 class PostsForm(ModelForm):
@@ -14,3 +14,18 @@ class PostsForm(ModelForm):
                 'maxlength': 50,
             })
         }
+
+
+class CommentForm(ModelForm):
+    class Meta:
+        model = Comments
+        fields = ['content']
+
+        widgets = {
+            'content': TextInput(attrs={
+                # 'class': 'md-textarea form-control',
+                'placeholder': 'Введите комментарий',
+
+            })
+        }
+

@@ -31,7 +31,7 @@ class PostDetail(DetailView):
             form.instance.post = post
             form.save()
 
-            return redirect(f'http://127.0.0.1:8000/post/{post_slug}/')
+            return redirect('post_detail', slug=post_slug)
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)

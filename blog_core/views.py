@@ -8,7 +8,7 @@ from .forms import PostsForm, CommentForm
 
 
 class Home(ListView):
-    paginate_by = 5
+    paginate_by = 3
     model = Posts
     template_name = 'all_posts.html'
     context_object_name = "post"

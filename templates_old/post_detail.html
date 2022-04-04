@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+{% block content %}
+    <div class="col d-flex justify-content-center">
+        <div class="card" style="width: 18rem;">
+            <img src="..." class="card-img-top" alt="...">
+            <p class="card-body">
+            <h5 class="card-title">{{ posts.author }}</h5>
+            <p class="card-text">{{ posts.content }}</p>
+            <p class="card-date"> {{ posts.published|date:"d.m.Y H:i:s" }}  </p>
+            <h6><u>Комментариев: {{ post_comments_count }}</u></h6>
+            <div class="dropdown">
+                <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton"
+                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Комментарии
+                </button>
+                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                    {% for comments in posts.comment.all %}
+                        <p class="card-text">{{ comments.author }}: {{ comments.content }}</p>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+
+        {% if request.user.is_authenticated %}
+            </div> <br>
+            <form method="post" action="{% url 'post_detail' slug=posts.slug %}">
+                {% csrf_token %}
+                <div align="center">
+                    {{ form.content }}
+                </div>
+                <div align="center">
+                    <button class="btn btn-outline-primary">Comment</button>
+                </div>
+            </form>
+        {% endif %}
+{% endblock %}

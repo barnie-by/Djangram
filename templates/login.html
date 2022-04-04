@@ -1,129 +1,30 @@
 {% extends "base.html" %}
+{% block title %}
+    Log In
+{% endblock %}
+
 {% block content %}
-{#    <form method="post">#}
-{#    {% csrf_token %}#}
-{#        <input type="text" placeholder="username" name="username"> <br>#}
-{#        <input type="password" placeholder="password" name="password"><br>#}
-{#    <input type="submit" value="Submit">#}
-{#    </form>#}
+
     <form method="post">
         {% csrf_token %}
         <div class="col d-flex justify-content-center">
-            <div class="card" style="width: 16rem;">
-                <p align="center">Djangram</p>
-                <form method="post">
-                    {% csrf_token %}
-                    <input type="text" placeholder="Username" name="username"> <br>
-                    <input type="password" placeholder="Password" name="password"><br>
+            <div class="card" style="width: 1000px; background-color: #90d2b3; border: 4px solid black">
+                <p align="center" style="margin-top: 10px">Djangram</p>
+                {% csrf_token %}
+                <input style="border: 2px solid black; width: 200px; margin: auto"
+                       type="text" placeholder="Username" name="username"> <br>
+                <input style="border: 2px solid black; width: 200px; margin: auto"
+                       type="password" placeholder="Password" name="password"><br>
+                <button class="btn btn-success" type="submit"
+                        style="width: 100px; height: 40px; background-color: #7bc033;
+                            border: 2px solid black; margin: auto">
+                    Log in
+                </button>
 
-
-{#                {% for field in login_form %}#}
-{#                    <br>#}
-{#                    <h5 class="card-title">{{ field }}</h5>#}
-{#                    {% if field.help_text %}#}
-{#                        <small style="color:grey;">{{ field.help_text }}</small>#}
-{#                    {% endif %}#}
-{#                     {% for error in field.errors%}#}
-{#                        <small style="color:red;">{{ field.help_text }}</small>#}
-{#                    {% endfor%}#}
-{#                    {% if login_form.non_field_errors %}#}
-{#                        <div style="color:red">#}
-{#                            <p>{{ login_form.non_field_errors }}</p>#}
-{#                        </div>#}
-{#                    {% endif %}#}
-{#                {% endfor %}#}
-                <button class="btn btn-outline-primary">Login</button>
-{#            </div>#}
-{#        </div>#}
-{#    <br>#}
-        <p align="center">Don't have an account?<a href="{% url 'register' %}"> Register</a></p>
-
+                <p align="center" style="margin-top: 20px">Don't have an account?<a href="{% url 'register' %}">
+                    Register</a>
+                </p>
+            </div>
+        </div>
     </form>
 {% endblock %}
-
-
-
-{#{% extends 'base.html' %}#}
-{#{% load crispy_forms_filters %}#}
-{#{% load crispy_forms_tags %}#}
-{#{% block title %}Login{% endblock %}#}
-{##}
-{#{% block content %}#}
-{#<div style="width: 450px;  margin: 0 auto; padding: 10px;">#}
-{#<h2>Login</h2>#}
-{#<form method="post">#}
-{#  {% csrf_token %}#}
-{#  {{ form|crispy}}#}
-{#  <button type="submit" class="btn btn-primary">Login</button>#}
-{#</form>#}
-{#</div>#}
-{#{% endblock %}#}
-
-{#{% extends 'base.html' %}#}
-{#{% load crispy_forms_filters %}#}
-{#{% load crispy_forms_tags %}#}
-{#{% block title %}Login{% endblock %}#}
-{##}
-{#{% block content %}#}
-{#    <div style="width: 450px;  margin: 0 auto; padding: 10px;">#}
-{#        <h2>Login</h2>#}
-{#        <form method="post">#}
-{#            {% csrf_token %}#}
-{#            {{ form|crispy }}#}
-{#            <button type="submit" class="btn btn-primary">Login</button>#}
-{#        </form>#}
-{#    </div>#}
-{#{% endblock %}#}
-{##}
-{##}
-
-{##}
-{#{% extends "base.html" %}#}
-{#{% block content %}#}
-{#    <form method="post">#}
-{#        {% csrf_token %}#}
-{##}
-{#        <div class="col d-flex justify-content-center">#}
-{#            <div class="card" style="width: 16rem;">#}
-{#                <p align="center">Djangram</p>#}
-{#                {% for field in login_form %}#}
-{#                    <br>#}
-{#                    <h5 class="card-title">{{ field }}</h5>#}
-{#                    {% if field.help_text %}#}
-{#                        <small style="color:grey;">{{ field.help_text }}</small>#}
-{#                    {% endif %}#}
-{#                     {% for error in field.errors%}#}
-{#                        <small style="color:red;">{{ field.help_text }}</small>#}
-{#                    {% endfor%}#}
-{#                    {% if login_form.non_field_errors %}#}
-{#                        <div style="color:red">#}
-{#                            <p>{{ login_form.non_field_errors }}</p>#}
-{#                        </div>#}
-{#                    {% endif %}#}
-{#                {% endfor %}#}
-{#                <button class="btn btn-outline-primary">Login</button>#}
-{#            </div>#}
-{#        </div>#}
-{##}
-{#    </form>#}
-{#{% endblock %}#}
-
-
-
-
-
-
-
-
-
-
-{#{% extends "base.html" %}#}
-{#{% block content %}#}
-{#    <div class="create">#}
-{#        <form id="create" method="POST">#}
-{#            {% csrf_token %}#}
-{#            {{ form.as_p }}#}
-{#            <button class="btn btn-outline-primary">Login</button>#}
-{#        </form>#}
-{#    </div>#}
-{#{% endblock %}#}

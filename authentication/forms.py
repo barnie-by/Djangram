@@ -12,11 +12,14 @@ class RegistrationForm(UserCreationForm):
         fields = ('email', 'username', 'password1', 'password2')
 
         widgets = {
-            'email': TextInput(attrs={
+            'email': forms.TextInput(attrs={
+                'style': 'border: 1.25px solid darkgray; border-radius: 10px; height: 35px; width: 220px',
                 'placeholder': 'Email',
                 'maxlength': 60,
+
             }),
             'username': TextInput(attrs={
+                'style': 'border: 1.25px solid darkgray; border-radius: 10px; height: 35px; width: 220px',
                 'placeholder': 'Username',
                 'maxlength': 15,
             })
@@ -25,6 +28,10 @@ class RegistrationForm(UserCreationForm):
     def __init__(self, *args, **kwargs):
         super(RegistrationForm, self).__init__(*args, **kwargs)
         self.fields['password1'].widget = PasswordInput(
-            attrs={'placeholder': 'Password'})
+            attrs={
+                'style': 'border: 1.25px solid darkgray; border-radius: 10px; height: 35px; width: 220px',
+                'placeholder': 'Password'})
         self.fields['password2'].widget = PasswordInput(
-            attrs={'placeholder': 'Repeat password'})
+            attrs={
+                'style': 'border: 1.25px solid darkgray; border-radius: 10px; height: 35px; width: 220px',
+                'placeholder': 'Repeat password'})

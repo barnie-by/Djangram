@@ -1,6 +1,6 @@
 {% extends "base.html" %}
 {% block title %}
-    Log In
+    <p align="center" style="color: black; margin-top: 60px">Log In</p>
 {% endblock %}
 
 {% block content %}
@@ -8,22 +8,18 @@
     <form method="post">
         {% csrf_token %}
         <div class="col d-flex justify-content-center">
-            <div class="card" style="width: 1000px; background-color: #90d2b3; border: 4px solid black">
-                <p align="center" style="margin-top: 10px">Djangram</p>
+            <div class="card" style="width: 1900px; background-color: #ffffff; border: 0.5px solid darkgray">
+                <p align="center" style="margin-top: 10px; font-size: 25px"><em>Djangram</em></p>
                 {% csrf_token %}
-                <input style="border: 2px solid black; width: 200px; margin: auto"
+                <input style="border: 0.5px solid black; border-radius: 9px; width: 230px; height: 35px; margin: auto"
                        type="text" placeholder="Username" name="username"> <br>
-                <input style="border: 2px solid black; width: 200px; margin: auto"
+                <input style="border: 0.5px solid black; border-radius: 9px; width: 230px; height: 35px; margin: auto"
                        type="password" placeholder="Password" name="password"><br>
-                <button class="btn btn-success" type="submit"
-                        style="width: 100px; height: 40px; background-color: #7bc033;
-                            border: 2px solid black; margin: auto">
-                    Log in
-                </button>
-
+                <button class="btn btn-outline-success" type="submit"
+                        style="width: 100px; height: 40px; margin: auto"> Log in </button>
                 <p align="center" style="margin-top: 20px">Don't have an account?<a href="{% url 'register' %}">
-                    Register</a>
-                </p>
+                    Create</a>
+                </p><br>
             </div>
         </div>
     </form>

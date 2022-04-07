@@ -9,6 +9,7 @@ class PostsForm(ModelForm):
 
         widgets = {
             'content': Textarea(attrs={
+                'style': 'border: 1.25px solid darkgray; border-radius: 10px; width: 100%',
                 'class': 'form-control',
                 'placeholder': 'Введите текст',
                 'maxlength': 50,
@@ -24,8 +25,8 @@ class CommentForm(ModelForm):
         widgets = {
             'content': TextInput(attrs={
                 # 'class': 'md-textarea form-control',
-                'placeholder': 'Введите комментарий',
+                'style': 'border: 1.25px solid darkgray; border-radius: 10px; height: 35px; width: 100%; align:center',
+                'placeholder': 'Добавьте комментарий...',
 
             })
         }
-

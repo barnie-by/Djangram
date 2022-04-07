@@ -1,6 +1,6 @@
 {% extends "base.html" %}
 {% block title %}
-    Add Post
+    <p align="center" style="color: black; margin-top: 60px">Add post</p>
 {% endblock %}
 
 {% block content %}
@@ -8,7 +8,9 @@
         <form id="create" method="POST">
             {% csrf_token %}
             {{ form.content }} <br>
-            <button class="btn btn-outline-primary">Post</button>
+            <div class="col d-flex justify-content-center">
+                <button class="btn btn-outline-primary">Post</button>
+            </div>
         </form>
     </div>
 {% endblock %}

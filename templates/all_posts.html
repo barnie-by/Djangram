@@ -1,38 +1,43 @@
 {% extends "base.html" %}
 
 {% block title %}
-    Postsline
+    <p align="center" style="color: black; margin-top: 60px">Postline</p>
 {% endblock %}
 
 {% block content %}
     <div>
 
         {% for posts in object_list %}
-            <div class="card" style="width: 18rem; margin-top: 20px; border: 7px solid black; horiz-align: center">
+                <div class="col d-flex justify-content-center">
+
+            <div class="card" style="width: 18rem; margin-top: 20px; border: 1px solid darkgray; horiz-align: center">
                 <img src="..." class="card-img-top" alt="..."
-                     style="background-color: #CBDCDF; border-bottom: 3px solid black">
-                <div class="card-body" style="background-color: #CBDCDF">
+                     style="border-bottom: 1px solid darkgray">
+                <div class="card-body">
                     <h5 class="card-title">{{ posts.author }}</h5>
                     <p class="card-text">{{ posts.content }}</p>
 
                     {% if request.user.is_authenticated %}
+                        <div class="col d-flex justify-content-center">
                         <a href="{{ posts.get_absolute_url }}">
                             <button type="button" class="btn btn-outline-primary">See post</button>
                         </a>
+                        </div>
+
                     {% else %}
-                        <p class="card-text">Please, Log In to see the Post</p>
+                        <a class="card-text" aria-current="page" href="{% url 'login' %}">Please, Log In to see the Post</a>
+{#                        <p class="card-text"> <u>Please, Log In to see the Post</u></p>#}
                     {% endif %}
                 </div>
             </div>
-
-    {% endfor %}
-
+                </div>
+        {% endfor %}
     </div>
 
 
-    <div>
+    <div style=" text-align: center">
         <div class="btn-group" role="group" aria-label="Item pagination"
-             style="margin-top: 15px; margin-bottom: 15px">
+             style="margin-top: 15px; margin-bottom: 15px;">
     <span class="step-links">
         {% if page_obj.has_previous %}
             <a href="?page=1"
@@ -43,10 +48,7 @@
         {% endif %}
 
         <span class="current">
-                        <a href="#"
-                           class="btn btn-outline-success">{{ page_obj.number }}
-                        </a>
-
+            <a href="#" class="btn btn-outline-success">{{ page_obj.number }}</a>
         </span>
 
         {% if page_obj.has_next %}

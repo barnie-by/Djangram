@@ -33,7 +33,7 @@
                 </button>
             </form>
             <br>
-            <a href="{% url 'user_page'  %}">
+            <a href="{% url 'user_page' posts.author.id %}">
                 <h5 class="card-title"> {{ posts.author }}</h5>
             </a>
             <p class="card-text"> {{ posts.content }}</p>

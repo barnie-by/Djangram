@@ -5,7 +5,7 @@
 {% block content %}
     <div class="col d-flex justify-content-center">
         <div class="card"
-             style=" width: 18rem; margin-top: 20px;
+             style=" width: 30rem; margin-top: 20px;
              border: 1px solid darkgrey; horiz-align: center">
             <img src="..." class="card-img-top" alt="..."
                  style=" border-bottom: 1px solid darkgrey">
@@ -33,7 +33,9 @@
                 </button>
             </form>
             <br>
-            <h5 class="card-title"> {{ posts.author }}</h5>
+            <a href="{% url 'user_page'  %}">
+                <h5 class="card-title"> {{ posts.author }}</h5>
+            </a>
             <p class="card-text"> {{ posts.content }}</p>
             <p class="card-date"> {{ posts.published|date:"d.m.Y H:i:s" }}  </p>
             <div class="dropdown">

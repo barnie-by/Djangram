@@ -1,6 +1,8 @@
 from django.contrib.auth.mixins import LoginRequiredMixin
-from django.shortcuts import redirect, get_object_or_404
-from blog_core.models import Posts, Comments, Likes
+from django.http import HttpResponse, Http404
+from django.shortcuts import redirect, get_object_or_404, render
+from django.template import loader
+from blog_core.models import Posts, Comments, Likes, Profile
 from django.views.generic import ListView, DetailView, CreateView
 from .forms import PostsForm, CommentForm
 
@@ -64,3 +66,42 @@ def likes_handler(request, slug):
         like_item.delete()
 
     return redirect('post_detail', slug=slug)
+
+
+
+# отображение профиля пользователя через функцию
+# def page_profile(request):
+#
+#     userpage = Profile.user
+#     user_posts = Posts.objects.filter(author=userpage)
+#     context = {'user_posts': user_posts}
+#     template = loader.get_template('profile.html')
+#
+#     return HttpResponse(template.render(context, request))
+
+
+# отображение профиля пользователя через класс
+
+class ProfilePage(LoginRequiredMixin, DetailView):
+    model = Profile
+    template_name = 'profile.html'
+
+    def get_context_data(self, *args, **kwargs):
+        context = super(ProfilePage, self).get_context_data()
+        page_user = get_object_or_404(Profile, id=self.kwargs['pk'])
+        user = self.request.user
+        user_posts = Posts.objects.filter(author=page_user.user)
+        context['page_user'] = page_user
+        context['user_posts'] = user_posts
+        return context
+#
+
+def profile_page(request):
+    # context = {'posts': Posts.objects.filter(author=request.user)}
+    #
+    # return render(request, 'user_profile.html', context)
+    user_object = request.user
+    user_posts = Posts.objects.filter(author=user_object)
+    context = {'user_posts': user_posts}
+    template = loader.get_template('user_profile.html')
+    return HttpResponse(template.render(context, request))

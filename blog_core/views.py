@@ -1,8 +1,8 @@
 from django.contrib.auth.mixins import LoginRequiredMixin
-from django.http import HttpResponse, Http404
-from django.shortcuts import redirect, get_object_or_404, render
+from django.http import HttpResponse
+from django.shortcuts import redirect, get_object_or_404
 from django.template import loader
-from blog_core.models import Posts, Comments, Likes, Profile
+from blog_core.models import Posts, Comments, Likes
 from django.views.generic import ListView, DetailView, CreateView
 
 from users.models import CustomUser
@@ -70,8 +70,6 @@ def likes_handler(request, slug):
     return redirect('post_detail', slug=slug)
 
 
-
-# отображение профиля пользователя через функцию
 def users_profile_page(request, author_id):
     chosen_user = get_object_or_404(CustomUser, id=author_id)
     user_posts = Posts.objects.filter(author=chosen_user)
@@ -80,21 +78,13 @@ def users_profile_page(request, author_id):
     return HttpResponse(template.render(context, request))
 
 
-# отображение профиля пользователя через класс
+def comment_author_profile_page(request, comment_author_id):
+    chosen_user = get_object_or_404(CustomUser, id=comment_author_id)
+    user_comment = Comments.objects.filter(author=chosen_user)
+    context = {'user_comment': user_comment, 'chosen_user': chosen_user}
+    template = loader.get_template('profile.html')
+    return HttpResponse(template.render(context, request))
 
-# class ProfilePage(LoginRequiredMixin, DetailView):
-#     model = Profile
-#     template_name = 'profile.html'
-#
-#     def get_context_data(self, *args, **kwargs):
-#         context = super(ProfilePage, self).get_context_data()
-#         page_user = get_object_or_404(Profile, id=self.kwargs['pk'])
-#         user = self.request.user
-#         user_posts = Posts.objects.filter(author=page_user.user)
-#         context['page_user'] = page_user
-#         context['user_posts'] = user_posts
-#         return context
-#
 
 def my_profile_page(request):
     user_object = request.user

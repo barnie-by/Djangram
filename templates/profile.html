@@ -2,12 +2,15 @@
 {% block title %}
     <p align="center" style="color: black; margin-top: 60px">Profile Page</p>
 {% endblock %}
-
 {% block content %}
     <h2>{{ chosen_user }}</h2>
-    {% for post in user_posts %}
-        <div class="card" style="width: 18rem;margin-top: 20px; border: 1px solid darkgray;">
-                <a href="{{ post.get_absolute_url }}"><img src="..." class="card-img-top" alt="..."></a>
-        </div>
-    {% endfor %}
+    <div class="row">
+        {% for post in user_posts %}
+            <div class="col-lg-4 ">
+                <div class="card" style="width: 18rem;margin-top: 20px; border: 1px solid darkgray;">
+                    <a href="{{ post.get_absolute_url }}" class="d-block"><img src="..." class="card-img-top img-thumbnail" alt="..."></a>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
 {% endblock %}

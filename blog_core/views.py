@@ -72,7 +72,7 @@ def likes_handler(request, slug):
 
 def users_profile_page(request, author_id):
     chosen_user = get_object_or_404(CustomUser, id=author_id)
-    user_posts = Posts.objects.filter(author=chosen_user)
+    user_posts = Posts.objects.filter(author=chosen_user).order_by('-published')
     context = {'user_posts': user_posts, 'chosen_user': chosen_user}
     template = loader.get_template('profile.html')
     return HttpResponse(template.render(context, request))
@@ -88,7 +88,7 @@ def comment_author_profile_page(request, comment_author_id):
 
 def my_profile_page(request):
     user_object = request.user
-    user_posts = Posts.objects.filter(author=user_object)
+    user_posts = Posts.objects.filter(author=user_object).order_by('-published')
     context = {'user_posts': user_posts}
     template = loader.get_template('user_profile.html')
     return HttpResponse(template.render(context, request))

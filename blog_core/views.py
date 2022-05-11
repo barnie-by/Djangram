@@ -1,7 +1,11 @@
 from django.contrib.auth.mixins import LoginRequiredMixin
+from django.http import HttpResponse
 from django.shortcuts import redirect, get_object_or_404
+from django.template import loader
 from blog_core.models import Posts, Comments, Likes
 from django.views.generic import ListView, DetailView, CreateView
+
+from users.models import CustomUser
 from .forms import PostsForm, CommentForm
 
 
@@ -64,3 +68,27 @@ def likes_handler(request, slug):
         like_item.delete()
 
     return redirect('post_detail', slug=slug)
+
+
+def users_profile_page(request, author_id):
+    chosen_user = get_object_or_404(CustomUser, id=author_id)
+    user_posts = Posts.objects.filter(author=chosen_user)
+    context = {'user_posts': user_posts, 'chosen_user': chosen_user}
+    template = loader.get_template('profile.html')
+    return HttpResponse(template.render(context, request))
+
+
+def comment_author_profile_page(request, comment_author_id):
+    chosen_user = get_object_or_404(CustomUser, id=comment_author_id)
+    user_comment = Comments.objects.filter(author=chosen_user)
+    context = {'user_comment': user_comment, 'chosen_user': chosen_user}
+    template = loader.get_template('profile.html')
+    return HttpResponse(template.render(context, request))
+
+
+def my_profile_page(request):
+    user_object = request.user
+    user_posts = Posts.objects.filter(author=user_object)
+    context = {'user_posts': user_posts}
+    template = loader.get_template('user_profile.html')
+    return HttpResponse(template.render(context, request))

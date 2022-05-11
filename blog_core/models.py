@@ -47,3 +47,14 @@ class Likes(models.Model):
 
     def __str__(self):
         return f'User {self.user_id} liked this post({self.liked_post})'
+
+
+class Profile(models.Model):
+    user = models.OneToOneField(CustomUser, on_delete=models.CASCADE)
+    bio = models.TextField(max_length=200)
+
+    def __str__(self):
+        return self.user.username
+
+    class Meta:
+        verbose_name_plural = 'User profile'

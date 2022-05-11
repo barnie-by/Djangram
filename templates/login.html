@@ -4,23 +4,26 @@
 {% endblock %}
 
 {% block content %}
+    <div style="margin-left: 29%" class="col-5">
+        <form method="post">
+            {% csrf_token %}
+            <div class="col d-flex justify-content-center">
+                <div class="card" style="width: 1900px; background-color: #ffffff; border: 0.5px solid darkgray">
+                    <p align="center" style="margin-top: 10px; font-size: 25px"><em>Djangram</em></p>
+                    {% csrf_token %}
+                    <input style="border: 0.5px solid black; border-radius: 9px; width: 230px; height: 35px; margin: auto"
+                           type="text" placeholder="Username" name="username"> <br>
+                    <input style="border: 0.5px solid black; border-radius: 9px; width: 230px; height: 35px; margin: auto"
+                           type="password" placeholder="Password" name="password"><br>
+                    <button class="btn btn-outline-success" type="submit"
+                            style="width: 100px; height: 40px; margin: auto"> Log in
+                    </button>
+                    <p align="center" style="margin-top: 20px">Don't have an account?<a href="{% url 'register' %}">
 
-    <form method="post">
-        {% csrf_token %}
-        <div class="col d-flex justify-content-center">
-            <div class="card" style="width: 1900px; background-color: #ffffff; border: 0.5px solid darkgray">
-                <p align="center" style="margin-top: 10px; font-size: 25px"><em>Djangram</em></p>
-                {% csrf_token %}
-                <input style="border: 0.5px solid black; border-radius: 9px; width: 230px; height: 35px; margin: auto"
-                       type="text" placeholder="Username" name="username"> <br>
-                <input style="border: 0.5px solid black; border-radius: 9px; width: 230px; height: 35px; margin: auto"
-                       type="password" placeholder="Password" name="password"><br>
-                <button class="btn btn-outline-success" type="submit"
-                        style="width: 100px; height: 40px; margin: auto"> Log in </button>
-                <p align="center" style="margin-top: 20px">Don't have an account?<a href="{% url 'register' %}">
-                    Create</a>
-                </p><br>
+                        Create</a>
+                    </p><br>
+                </div>
             </div>
-        </div>
-    </form>
+        </form>
+    </div>
 {% endblock %}

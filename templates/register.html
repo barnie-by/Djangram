@@ -3,38 +3,36 @@
     <p align="center" style="color: black; margin-top: 60px">Registration</p>
 {% endblock %}
 {% block content %}
-
-    <div class="post__main">
-        <div class="col d-flex justify-content-center">
-            <div class="card" style="width: 1000px; background-color: #ffffff; border: 0.5px solid darkgray">
-                <form method="post">
-                    {% csrf_token %}
-                    <div class="row g-3">
-                        <div class="form-error">
-                            {{ form.non_field_errors }}
-                        </div>
-                        <p align="center" style="margin-top: 10px; font-size: 25px"><em>Djangram</em></p>
-                        {% for form_field in registration_form %}
-                            <div class="col" align="center">
-{#                                 style="border: 1px solid darkgray; border-radius: 9px; background-color: #ffffff">#}
-                                <label for="{{ form_field.id_for_label }}" class="form-label"></label>
-                                {{ form_field }}
-                                <div class="form-error">
-                                    {{ form_field.errors }}
-                                </div>
+    <div style="margin-left: 29%" class="col-5">
+        <div class="post__main">
+            <div class="col d-flex justify-content-center">
+                <div class="card" style="width: 1000px; background-color: #ffffff; border: 0.5px solid darkgray">
+                    <form method="post">
+                        {% csrf_token %}
+                        <div class="row g-3">
+                            <div class="form-error">
+                                {{ form.non_field_errors }}
                             </div>
-                        {% endfor %}
-
-                    </div>
-                    <hr class="my-4">
-                    <button class="w-100 btn btn-outline-success" type="submit"
-                            style="width: 30px; height: 45px;
+                            <p align="center" style="margin-top: 10px; font-size: 25px"><em>Djangram</em></p>
+                            {% for form_field in registration_form %}
+                                <div class="col" align="center">
+                                    <label for="{{ form_field.id_for_label }}" class="form-label"></label>
+                                    {{ form_field }}
+                                    <div class="form-error">
+                                        {{ form_field.errors }}
+                                    </div>
+                                </div>
+                            {% endfor %}
+                        </div>
+                        <hr class="my-4">
+                        <button class="w-100 btn btn-outline-success" type="submit"
+                                style="width: 30px; height: 45px;
                       margin: auto">Create account
-                    </button>
+                        </button>
 
-                </form>
+                    </form>
+                </div>
             </div>
         </div>
     </div>
-
 {% endblock %}

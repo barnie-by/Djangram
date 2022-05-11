@@ -6,12 +6,11 @@ class PostsForm(ModelForm):
     class Meta:
         model = Posts
         fields = ['content']
-
         widgets = {
             'content': Textarea(attrs={
-                'style': 'border: 1.25px solid darkgray; border-radius: 10px; width: 100%',
+                'style': 'border: 1.25px solid darkgray; border-radius: 10px; width: 100%;',
                 'class': 'form-control',
-                'placeholder': 'Введите текст',
+                'placeholder': 'Add some text...',
                 'maxlength': 50,
             })
         }
@@ -24,9 +23,8 @@ class CommentForm(ModelForm):
 
         widgets = {
             'content': TextInput(attrs={
-                # 'class': 'md-textarea form-control',
                 'style': 'border: 1.25px solid darkgray; border-radius: 10px; height: 35px; width: 100%; align:center',
-                'placeholder': 'Добавьте комментарий...',
+                'placeholder': 'Add comment...',
 
             })
         }

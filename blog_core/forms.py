@@ -5,13 +5,13 @@ from django.forms import ModelForm, Textarea, TextInput
 class PostsForm(ModelForm):
     class Meta:
         model = Posts
-        fields = ['content']
+        fields = ['content', 'post_image']
         widgets = {
             'content': Textarea(attrs={
                 'style': 'border: 1.25px solid darkgray; border-radius: 10px; width: 100%;',
                 'class': 'form-control',
                 'placeholder': 'Add some text...',
-                'maxlength': 50,
+                'maxlength': 550,
             })
         }
 

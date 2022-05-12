@@ -6,9 +6,10 @@
 {% block content %}
     <div style="margin-left: 25%" class="col-6">
         <div class="create">
-            <form id="create" method="POST">
+            <form id="create" method="POST" enctype="multipart/form-data">
                 {% csrf_token %}
                 {{ form.content }} <br>
+                {{ form.post_image }}
                 <div class="col d-flex justify-content-center">
                     <button class="btn btn-outline-primary">Post</button>
                 </div>

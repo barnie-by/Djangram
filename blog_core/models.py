@@ -12,6 +12,7 @@ class Posts(models.Model):
     content = models.TextField(null=True, blank=True)
     published = models.DateTimeField(auto_now_add=True)
     slug = models.SlugField(max_length=50, unique=True, db_index=True, verbose_name='URL')
+    post_image=models.ImageField(null=True)
 
     def __str__(self) -> str:
         return f'Post {self.id}, by {self.author}, {self.slug}'

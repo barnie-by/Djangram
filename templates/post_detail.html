@@ -7,7 +7,7 @@
         <div class="card"
              style=" width: 30rem; margin-top: 20px;
              border: 1px solid darkgrey; horiz-align: center">
-            <img src="..." class="card-img-top" alt="..."
+            <img src="{{ posts.post_image.url }}" class="card-img-top" alt="..."
                  style=" border-bottom: 1px solid darkgrey">
             <form method="POST" action="{% url 'post_likes' slug=posts.slug %}">
                 {% csrf_token %}

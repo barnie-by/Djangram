@@ -8,7 +8,7 @@
         {% for post in user_posts %}
             <div class="col-lg-4 ">
                 <div class="card" style="width: 18rem;margin-top: 20px; border: 1px solid darkgray;">
-                    <a href="{{ post.get_absolute_url }}" class="d-block"><img src="{{ posts.post_image.url }}" class="card-img-top img-thumbnail" alt="..."></a>
+                    <a href="{{ post.get_absolute_url }}" class="d-block"><img src="{{ post.post_image.url }}" class="card-img-top img-thumbnail" alt="..."></a>
                 </div>
             </div>
         {% endfor %}

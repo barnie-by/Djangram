@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/4.0/ref/settings/
 """
 from pathlib import Path
 import os
+import cloudinary_storage
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 from credits import DJANGO_KEY, DB_NAME, DB_USER, DB_PASSWORD, DB_HOST
 
@@ -39,6 +40,8 @@ INSTALLED_APPS = [
     'users.apps.UsersConfig',
     'blog_core.apps.Blog_coreConfig',
     'authentication.apps.AuthenticationConfig',
+    'cloudinary_storage',
+    'cloudinary',
 
 ]
 
@@ -128,3 +131,11 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 LOGIN_REDIRECT_URL = 'home'
 LOGOUT_REDIRECT_URL = 'home'
+
+CLOUDINARY_STORAGE = {
+    'CLOUD_NAME': 'dzcov1arb',
+    'API_KEY': '794276824625189',
+    'API_SECRET': '1_4pky2eE_SnNiDyxryTta96PwA'
+}
+
+DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
